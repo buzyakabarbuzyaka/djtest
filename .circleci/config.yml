@@ -45,7 +45,7 @@ jobs:
 #          name: Deploy Over SSH
 #          command: |
 #            ssh $SSH_USER@$SSH_HOST "<remote deploy command>"
-      - run: ssh -o StrictHostKeyChecking=no ark@35.228.217.64 "cd /home/ark/djtest ; sudo git pull origin master"
+      - run: ssh -o StrictHostKeyChecking=no ark@35.228.217.64 "cd /home/ark/djtest ; sudo git pull"
       - run: ssh -o StrictHostKeyChecking=no ark@35.228.217.64 "sudo fuser 8000/tcp -k; ls"
       - run: ssh -o StrictHostKeyChecking=no ark@35.228.217.64 "pip3 install -r /home/ark/djtest/requirements.txt"
       - run: ssh -o StrictHostKeyChecking=no ark@35.228.217.64 "nohup /usr/bin/python3 /home/evv/djtest/manage.py runserver > logs.txt &"
