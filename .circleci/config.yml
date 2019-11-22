@@ -1,30 +1,15 @@
-# Python CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-python/ for more details
-#
 version: 2
 jobs:
   build:
     docker:
-      # specify the version you desire here
-      # use `-browsers` prefix for selenium tests, e.g. `3.6.1-browsers`
       - image: circleci/python:3.6.1
 
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/postgres:9.4
-
     working_directory: ~/repo
-
     steps:
       - checkout
-
-      # Download and cache dependencies
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "requirements.txt" }}
-            # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
       - run:
@@ -40,11 +25,6 @@ jobs:
             - ./venv
           key: v1-dependencies-{{ checksum "requirements.txt" }}
 
-      # run tests!
-      # this example uses Django's built-in test-runner
-      # other common Python testing frameworks include pytest and nose
-      # https://pytest.org
-      # https://nose.readthedocs.io
       - run:
           name: run tests
           command: |
@@ -54,3 +34,30 @@ jobs:
       - store_artifacts:
           path: test-reports
           destination: test-reports
+  deploy:
+    machine:
+      enabled: true
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+              - "e7:32:3b:12:5f:46:6f:e2:71:c3:b3:ca:61:c6:65:63"
+#      - run:
+#          name: Deploy Over SSH
+#          command: |
+#            ssh $SSH_USER@$SSH_HOST "<remote deploy command>"
+      - run: ssh -o StrictHostKeyChecking=no ark@35.228.217.64 "cd /home/ark/djtest ; sudo git pull origin master"
+      - run: ssh -o StrictHostKeyChecking=no ark@35.228.217.64 "sudo fuser 8000/tcp -k; ls"
+      - run: ssh -o StrictHostKeyChecking=no ark@35.228.217.64 "pip3 install -r /home/ark/djtest/requirements.txt"
+      - run: ssh -o StrictHostKeyChecking=no ark@35.228.217.64 "nohup /usr/bin/python3 /home/evv/djtest/manage.py runserver > logs.txt &"
+
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
