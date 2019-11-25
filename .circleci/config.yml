@@ -35,8 +35,8 @@ jobs:
           path: test-reports
           destination: test-reports
   deploy:
-    machine:
-      enabled: true
+#    machine:
+#      enabled: true
     steps:
       - add_ssh_keys:
           fingerprints:
@@ -45,7 +45,7 @@ jobs:
 #          name: Deploy Over SSH
 #          command: |
 #            ssh $SSH_USER@$SSH_HOST "<remote deploy command>"
-      - run: ssh -i .ssh/id_rsa.pub ark@35.228.217.64 "echo 'hi' > hi"
+      - run: ssh -o StrictHostKeyChecking=no ark@35.228.217.64 "echo 'hi' > hi"
 #      - run: ssh -o StrictHostKeyChecking=no ark@35.228.217.64 "cd /home/ark/djtest ; sudo git pull"
 #      - run: ssh -o StrictHostKeyChecking=no ark@35.228.217.64 "sudo fuser 8000/tcp -k; ls"
 #      - run: ssh -o StrictHostKeyChecking=no ark@35.228.217.64 "pip3 install -r /home/ark/djtest/requirements.txt"
