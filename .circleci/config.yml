@@ -35,10 +35,8 @@ jobs:
           path: test-reports
           destination: test-reports
   deploy:
-    docker:
-      - image: circleci/python:3.6.1
-#    machine:
-#      enabled: true
+    machine:
+      enabled: true
     steps:
       - add_ssh_keys:
           fingerprints:
