@@ -4,7 +4,7 @@ jobs:
     docker:
       - image: circleci/python:3.6.1
 
-    working_directory: ~/repo
+    working_directory: ~/djtest
     steps:
       - checkout
       - restore_cache:
@@ -40,7 +40,7 @@ jobs:
     steps:
       - add_ssh_keys:
           fingerprints:
-              - "e7:32:3b:12:5f:46:6f:e2:71:c3:b3:ca:61:c6:65:63"
+            - "e7:32:3b:12:5f:46:6f:e2:71:c3:b3:ca:61:c6:65:63"
 #      - run:
 #          name: Deploy Over SSH
 #          command: |
