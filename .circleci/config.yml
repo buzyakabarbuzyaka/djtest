@@ -35,6 +35,8 @@ jobs:
           path: test-reports
           destination: test-reports
   deploy:
+    docker:
+      - image: circleci/python:3.6.1
 #    machine:
 #      enabled: true
     steps:
