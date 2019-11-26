@@ -45,7 +45,7 @@ jobs:
 
       - run:
           name: Deploy Commands
-          comand: |
+          command: |
             ssh -o StrictHostKeyChecking=no ark@35.228.217.64 "cd djtest ; sudo bash deploy_reload.sh . > deploy_log.txt"
 
 workflows:
