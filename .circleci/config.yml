@@ -45,17 +45,16 @@ jobs:
 
       - run:
         name: Deploy Commands
-        comand: |
-          ssh -o StrictHostKeyChecking=no ark@35.228.217.64 "cd djtest ; sudo bash deploy_reload.sh . > deploy_log.txt"
+        comand: ssh -o StrictHostKeyChecking=no ark@35.228.217.64 "cd djtest ; sudo bash deploy_reload.sh . > deploy_log.txt"
 
 workflows:
   version: 2
   build-and-deploy:
     jobs:
-      - build
+#      - build
       - deploy:
-          requires:
-            - build
-          filters:
-            branches:
-              only: master
+#          requires:
+#            - build
+#          filters:
+#            branches:
+#              only: master
