@@ -5,7 +5,7 @@ from rest_framework.views import APIView
 
 class JsonView(APIView):
     def get(self, request):
-        return Response({"predicton": True})
+        return Response({"predicton": False})
 
 
 def hello_world(request):
