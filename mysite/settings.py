@@ -120,3 +120,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+#TODO: может быть не лучшее место для генерации ID
+
+import random
+ID = random.random()
