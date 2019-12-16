@@ -13,8 +13,11 @@ Group=root
 #Environment=RACK_ENV=production
 #OOMScoreAdjust=-1000
 
-ExecStart=/bin/bash '/home/ark/djtest/service_reload.sh'
-# /usr/bin/python3 /home/ark/Junk\ Projects/djtest/manage.py rnserver 8000 service -C /home/ark/Junk\ Projects/djtest/shared/config/service.state active
+
+#ExecStart=/bin/bash '/home/ark/djtest/service_reload.sh'
+#ExecStart=/bin/echo 'hi' > "${APP_DIR}/hi"
+ExecStart=/usr/bin/python3 ${APP_DIR}/manage.py runserver 8000
+#ExecStart=/bin/true
 ExecStop=/bin/pkill -TERM $MAINPID
 #RestartSec=10
 
