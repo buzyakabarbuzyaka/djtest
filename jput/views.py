@@ -10,7 +10,7 @@ class JsonView(APIView):
 from django.conf import settings
 
 def hello_world(request):
-    with open("./jput/templates/jput/dick_pic.txt", "r") as f:
+    with open("./content/media/hookah.txt", "r") as f:
         data = f.readlines()
     data = [l.strip() for l in data]
     return render(request, 'jput/hello_world.html', {'data': data, 'ID': settings.ID})
