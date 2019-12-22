@@ -6,7 +6,9 @@ db.sqlite3
 .DS_Store
 # Project exclude paths
 /venv
+
 logs/*
 !logs/.dust
+
 pids/*
 !pids/.dust
