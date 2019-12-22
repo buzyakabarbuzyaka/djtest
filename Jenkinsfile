@@ -5,6 +5,5 @@ node
     dir('djtest')
     {
         sh 'echo "hi" > hello.txt'
-        sh 'true'
     }
 }
