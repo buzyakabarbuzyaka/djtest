@@ -18,3 +18,12 @@
 ░░░░░░▀▀▄▄░░██████████████░░▄▄▀░░░░░░░
 ░░░░░░░░░▀▀████████████████▀▀░░░░░░░░░
 ░░░░░░░░░░░░░▀▀▀▀▀▀▀▀▀▀▀▀░░░░░░░░░░░░░
+
+
+
+https://machinelearningmastery.com/how-to-develop-rnn-models-for-human-activity-recognition-time-series-classification/
+77.238.128.163
+http://mlshitcheatsheet.ru:8000/measurements
+"http://mlshitcheatsheet.ru:8000/series?measurement={name}"
+qux-x3G-4EU-8KB-7Nr-LS9
+
